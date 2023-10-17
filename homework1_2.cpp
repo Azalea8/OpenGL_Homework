@@ -32,7 +32,7 @@ int main()
         return -1;
     }
 
-    Shader ourShader("../shader/texture1.vs", "../shader/texture1.fs");
+    Shader ourShader("../shader/homework1/texture1.vs", "../shader/homework1/texture1.fs");
 
     float vertices[] = {
             // positions          // colors           // texture coords
@@ -84,7 +84,7 @@ int main()
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true);
 
-    unsigned char *data = stbi_load("../img/img.png", &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load("../img/homework1/img.png", &width, &height, &nrChannels, 0);
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);

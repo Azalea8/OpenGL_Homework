@@ -44,7 +44,7 @@ int main(){
 
     // build and compile our shader zprogram
     // ------------------------------------
-    Shader ourShader1("../shader/texture2.vs", "../shader/texture2.fs");
+    Shader ourShader1("../shader/homework2/texture1.vs", "../shader/homework2/texture1.fs");
 
     // 所有的顶点相关信息
     float vertices[] = {
