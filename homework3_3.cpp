@@ -34,8 +34,8 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // 创建窗口对象
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "lexiaoyuan", NULL, NULL);
-    if (window == NULL)
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", nullptr, nullptr);
+    if (window == nullptr)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -56,10 +56,10 @@ int main()
     // 启用深度测试
     glEnable(GL_DEPTH_TEST);
 
-    int Num = 5;
     // 定义坐标
-    float vertices[Num * Num * 3];
-    float indices[(Num-1) * (Num-1) * 2 * 3];
+    int Num = 50;
+    float vertices[Num * Num * 3 * 2];
+    unsigned int indices[(Num-1) * (Num-1) * 2 * 3];
     float x, z = 1, y;
     float ride = 2.0 / Num;
     int count1 = 0;
@@ -72,6 +72,11 @@ int main()
             vertices[count1++] = x;
             vertices[count1++] = y;
             vertices[count1++] = z;
+
+            // 颜色
+            vertices[count1++] = rand() / double(RAND_MAX);
+            vertices[count1++] = rand() / double(RAND_MAX);
+            vertices[count1++] = rand() / double(RAND_MAX);
 
             if (i - 1 >= 0 && j - 1 >= 0) {
                 indices[count2++] = i * Num + j;
@@ -113,8 +118,11 @@ int main()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // 位置属性
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float )));
+    glEnableVertexAttribArray(1);
 
     // 渲染循环
     while (!glfwWindowShouldClose(window))
@@ -129,24 +137,21 @@ int main()
         // 绑定顶点数组
         glBindVertexArray(VAO);
 
-        // 绘制图元
-        // glDrawArrays(GL_TRIANGLES, 0, 3);
-
         // 绑定索引缓冲对象
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
         // 使用线框模式
-        // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        // 使用填充模式（默认）
-        // glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
         // 定义模型矩阵
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -10.0f));
-        // model = glm::rotate(model, (float)glfwGetTime() * glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.3f));
+
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));
+        model = glm::rotate(model, (float)glfwGetTime() * glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        // model = glm::rotate(model, (float)glfwGetTime() * glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 
         glm::mat4 view;
-        view = glm::lookAt(glm::vec3(10.0f, 10.0f, 1.0f), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
+        view = glm::lookAt(glm::vec3(0.0f, 0.0f, 4.0f), glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, 1.0, 0.0));
 
         // 定义投影矩阵
         glm::mat4 projection = glm::mat4(1.0f);
