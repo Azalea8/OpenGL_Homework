@@ -7,4 +7,4 @@ add_executable(OpenGL_Homework src/glad.c homework3_3.cpp)
 
 INCLUDE_DIRECTORIES(include)
 link_directories(lib)
-target_link_libraries(OpenGL_Homework ${PROJECT_SOURCE_DIR}/lib/glfw3.dll)
+target_link_libraries(OpenGL_Homework ${PROJECT_SOURCE_DIR}/lib/glfw3.dll ${PROJECT_SOURCE_DIR}/lib/libassimp-5.dll)
