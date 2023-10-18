@@ -4,7 +4,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
-#include <shader_s.h>
+#include "learnopengl/shader_s.h"
 
 #include <iostream>
 
