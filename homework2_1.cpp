@@ -189,7 +189,7 @@ int main(){
         }
         glm::mat4 model1 = glm::mat4(1.0f);
         model1 = glm::translate(model1, glm::vec3(X1, Y1, 0.0));
-        float angle = 50.0f;
+        float angle = 200.0f;
         model1 = glm::rotate(model1, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
 
         X2 += Vx2;
@@ -205,11 +205,11 @@ int main(){
 
         R += Rv;
         if (R > 3) Rv = -Rv;
-        if (R < 1) Rv = -Rv;
+        if (R < 0.2) Rv = -Rv;
 
         glm::mat4 model2 = glm::mat4(1.0f);
         model2 = glm::translate(model2, glm::vec3(X2, Y2, 0.0));
-        angle = 100.0f;
+        angle = 200.0f;
         model2 = glm::rotate(model2, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
         model2 = glm::scale(model2, glm::vec3(R, R, R));
 
