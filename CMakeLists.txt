@@ -3,7 +3,7 @@ project(OpenGL_Homework)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(OpenGL_Homework src/glad.c homework4_2.cpp)
+add_executable(OpenGL_Homework src/glad.c homework4_3.cpp)
 
 INCLUDE_DIRECTORIES(include)
 link_directories(lib)
