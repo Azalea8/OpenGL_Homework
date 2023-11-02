@@ -69,14 +69,15 @@ int main()
         for (int j = 0; j < Num; j++) {
             x += ride;
             y = height(x, z);
+            // 坐标
             vertices[count1++] = x;
             vertices[count1++] = y;
             vertices[count1++] = z;
 
             // 颜色
-            vertices[count1++] = rand() / double(RAND_MAX);
-            vertices[count1++] = rand() / double(RAND_MAX);
-            vertices[count1++] = rand() / double(RAND_MAX);
+            vertices[count1++] = 1.0f;
+            vertices[count1++] = 0.0f;
+            vertices[count1++] = 0.0f;
 
             if (i - 1 >= 0 && j - 1 >= 0) {
                 indices[count2++] = i * Num + j;

@@ -77,7 +77,7 @@ int main()
 
     // build and compile shaders
     // -------------------------
-    Shader ourShader("../shader/1.model_loading.vs", "../shader/1.model_loading.fs");
+    Shader ourShader("../shader/homework3/1.model_loading.vs", "../shader/homework3/1.model_loading.fs");
 
     // load models
     // -----------
